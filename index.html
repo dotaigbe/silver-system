@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Stop Losing Money on Ads | Free Training</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital,wght@1,600&display=swap');
+
+        :root {
+            --bg-base: #0a0808; 
+            --bg-card: #151211;
+            --text-main: #F3F1F0;
+            --text-muted: #9CA3AF;
+            --accent-cta: #FF7B42; 
+            --accent-text: #F2A679; 
+            --border-color: #2D2623;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .page-wrapper {
+            background-image: radial-gradient(circle at top center, #231b18 0%, var(--bg-base) 60%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section { padding: 56px 0; border-bottom: 1px solid var(--border-color); }
+        section:last-child { border-bottom: none; padding-bottom: 96px; }
+
+        /* Tags */
+        .tag-container {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tag.red {
+            border-color: rgba(255, 78, 78, 0.3);
+            color: #FF8585;
+        }
+        .tag.red::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #FF4E4E;
+            border-radius: 50%;
+        }
+
+        .label {
+            display: inline-block;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent-text);
+            margin-bottom: 20px;
+        }
+
+        /* Typography */
+        h1 { 
+            font-size: 36px; 
+            font-weight: 800; 
+            line-height: 1.15; 
+            margin-bottom: 24px; 
+            letter-spacing: -1px;
+            text-align: center;
+        }
+        h2 { font-size: 26px; font-weight: 800; line-height: 1.25; margin-bottom: 20px; letter-spacing: -0.5px;}
+        p { margin-bottom: 18px; font-size: 16px; color: var(--text-muted); font-weight: 400;}
+        strong { color: var(--text-main); font-weight: 600; }
+        
+        .highlight {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--accent-text);
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .cta-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--accent-cta);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 16px;
+            margin: 32px 0 16px 0;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-btn:active { transform: scale(0.98); }
+        .cta-subtext { text-align: center; font-size: 13px; color: var(--text-muted); margin-bottom: 0; }
+
+        /* Infinite Sideways Scrolling Ticker */
+        .marquee-wrapper {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            overflow: hidden;
+            background: rgba(21, 18, 17, 0.6);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+            margin-top: 36px;
+            margin-bottom: 10px;
+        }
+        .marquee-wrapper::before, .marquee-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .marquee-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-base), transparent);
+        }
+        .marquee-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-base), transparent);
+        }
+        .marquee-track {
+            display: flex;
+            gap: 16px;
+            width: max-content;
+            animation: scroll-left 22s linear infinite;
+        }
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+        .marquee-item span {
+            color: var(--accent-cta);
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Lists & Cards */
+        ul.bullet-list { list-style: none; margin-bottom: 24px; }
+        ul.bullet-list li { 
+            position: relative; 
+            padding-left: 24px; 
+            margin-bottom: 12px; 
+            color: var(--text-muted);
+        }
+        ul.bullet-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            top: 0px;
+            color: var(--accent-cta);
+            font-weight: bold;
+        }
+
+        ul.check-list { list-style: none; margin-bottom: 24px; }
+        ul.check-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+        }
+        ul.check-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-text);
+            font-weight: bold;
+        }
+
+        ul.micro-list { list-style: none; margin: 12px 0; }
+        ul.micro-list li {
+            padding-left: 18px;
+            position: relative;
+            margin-bottom: 6px;
+            font-size: 15px;
+            color: var(--text-main);
+        }
+        ul.micro-list li::before {
+            content: "•";
+            position: absolute;
+            left: 4px;
+            color: var(--accent-cta);
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .module-title {
+            color: var(--accent-text);
+            font-weight: 800;
+            margin-bottom: 12px;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .module-list {
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        /* Thought Box */
+        .thought-box {
+            background: rgba(255, 123, 66, 0.05);
+            border-left: 2px solid var(--accent-cta);
+            padding: 16px 20px;
+            margin: 20px 0 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .thought-box p {
+            margin-bottom: 6px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--text-main);
+            font-size: 17px;
+        }
+        .thought-box p:last-child { margin-bottom: 0; }
+
+        /* Stats & Testimonial Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            padding: 32px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 32px;
+        }
+        .stat-item { text-align: left; }
+        .stat-num { font-size: 28px; font-weight: 800; color: var(--text-main); line-height: 1; margin-bottom: 8px;}
+        .stat-num.small-unit { font-size: 20px; }
+        .stat-label { font-size: 11px; font-weight: 800; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; display: block;}
+        .stat-desc { font-size: 12px; color: var(--text-muted); line-height: 1.3;}
+
+        .testimonial-card {
+            background: #110E0D;
+            border-radius: 20px;
+            padding: 32px 24px;
+            margin: 24px 0;
+            border: 1px solid #1F1A18;
+        }
+        .quote-icon {
+            color: var(--accent-cta);
+            font-size: 40px;
+            font-family: 'Playfair Display', serif;
+            line-height: 0.5;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .testimonial-text {
+            font-size: 16px;
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+        .test-author-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .avatar-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #2D2623;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .author-details strong { display: block; font-size: 14px; margin-bottom: 2px;}
+        .author-details span { font-size: 12px; color: var(--text-muted); }
+
+        .portrait {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+            border: 2px solid var(--border-color);
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #1F1A18;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-question {
+            font-weight: 800;
+            color: var(--text-main);
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .faq-answer {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 0;
+        }
+
+        /* Form Section */
+        .form-box {
+            background: #110E0D;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 16px;
+        }
+        .form-input {
+            width: 100%;
+            background: var(--bg-base);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 16px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        .form-input:focus {
+            border-color: var(--accent-cta);
+        }
+
+        @media (min-width: 768px) {
+            h1 { font-size: 48px; }
+            h2 { font-size: 32px; }
+            section { padding: 80px 0; }
+            .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+            .card { margin-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="container">
+        
+        <!-- HERO SECTION -->
+        <section style="text-align: center; padding-top: 64px; padding-bottom: 32px; border-bottom: none;">
+            <div class="tag-container">
+                <div class="tag red">FREE TRAINING</div>
+                <div class="tag">CREATORS & VENDORS</div>
+            </div>
+            
+            <h1>Stop losing money on ads. Build a <span class="highlight">high-converting</span> landing page on your phone.</h1>
+            
+            <p style="text-align: center;">This free training shows you how to build a working page in 20 minutes using AI to structure it right, write persuasive copy, and design a clean layout.</p>
+            <p style="text-align: center;">No laptop. No designer. Just a simple system that captures leads and turns them into buyers.</p>
+            
+            <a href="https://wa.link/lluucm" target="_blank" class="cta-btn">Register For Free Access</a>
+            <p class="cta-subtext">Only for people ready to stop losing sales.</p>
+        </section>
+
+        <!-- INFINITE SIDEWAYS SCROLLING SLIDER -->
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <!-- Set 1 -->
+                <div class="marquee-item"><span>⚡</span> 100% Smartphone Friendly</div>
+                <div class="marquee-item"><span>🤖</span> Free AI Tools Only</div>
+                <div class="marquee-item"><span>🚀</span> 20-Minute Setup</div>
+                <div class="marquee-item"><span>💰</span> Stop Wasting Ad Money</div>
+                <div class="marquee-item"><span>📱</span> Zero Laptop Required</div>
+                <div class="marquee-item"><span>🎯</span> High-Converting System</div>
+                <!-- Set 2 (Duplicate for Seamless Loop) -->
+                <div class="marquee-item"><span>⚡</span> 100% Smartphone Friendly</div>
+                <div class="marquee-item"><span>🤖</span> Free AI Tools Only</div>
+                <div class="marquee-item"><span>🚀</span> 20-Minute Setup</div>
+                <div class="marquee-item"><span>💰</span> Stop Wasting Ad Money</div>
+                <div class="marquee-item"><span>📱</span> Zero Laptop Required</div>
+                <div class="marquee-item"><span>🎯</span> High-Converting System</div>
+            </div>
+        </div>
+
+        <!-- THE STORY SECTION: WHY YOUR ADS AREN'T MAKING MONEY -->
+        <section style="padding-top: 48px;">
+            <span class="label">The Real Breakdown</span>
+            <h2>Why Your Ads Aren’t Making Money</h2>
+            
+            <p>You think your ad isn’t working because:</p>
+            <ul class="bullet-list">
+                <li>The offer is bad.</li>
+                <li>Your audience is wrong.</li>
+                <li>Your creative is weak.</li>
+            </ul>
+
+            <p><strong>But that’s not the real problem.</strong></p>
+            <p>The real problem? <strong>You’re sending people directly to your DMs.</strong></p>
+
+            <div class="card">
+                <p style="color: var(--text-main); font-weight: 600; margin-bottom: 12px;">Let me show you something:</p>
+                <p>You spend <strong>₦10,000</strong> on Facebook or Instagram ads → get <strong>100 clicks</strong> → send them all to your DMs or WhatsApp.</p>
+                <p style="margin-bottom: 4px;">Out of those 100 people:</p>
+                <ul class="micro-list">
+                    <li>5 reply.</li>
+                    <li>2 ask questions.</li>
+                    <li><strong>1 buys.</strong></li>
+                </ul>
+                <p style="margin-top: 16px; margin-bottom: 0;">So you say: <span class="highlight">“Ads no dey work.”</span></p>
+            </div>
+
+            <p><strong>But that’s not true. Your ads worked.</strong> They brought traffic.</p>
+            <p>Your system failed.</p>
+
+            <p>Because among those 99 people who didn’t buy:</p>
+            <ul class="bullet-list">
+                <li>Some were interested but didn’t know what to say.</li>
+                <li>Some got distracted and forgot.</li>
+                <li>Some checked your profile, didn't see enough information, and left.</li>
+                <li>Some wanted to think about it — but you had no way to follow up.</li>
+            </ul>
+
+            <p>And here’s the hard truth: <strong>People don’t always buy immediately.</strong></p>
+            <p>The serious buyers often need time. They need to read your offer, understand what you're selling, and decide whether it’s actually for them.</p>
+
+            <p>They are thinking:</p>
+            <div class="thought-box">
+                <p>“Is this for me?”</p>
+                <p>“Can I trust this?”</p>
+                <p>“Is this worth my money?”</p>
+            </div>
+
+            <p>But when you send them straight to your DMs, there’s no structured offer. No clear explanation. No space to think. Just a blank chat box.</p>
+            <p>So they leave. And you lose the sale — not because your product is bad, but because <strong>you gave them no proper environment to make a decision.</strong></p>
+
+            <p style="margin-top: 32px;">The way people buy is changing. In 2026, you don't always need to chase people into buying. You need to give them a place where they can understand the offer for themselves.</p>
+
+            <p>A clean, clear page where:</p>
+            <ul class="check-list">
+                <li>The offer is explained clearly</li>
+                <li>The benefits are obvious</li>
+                <li>The right questions are answered</li>
+                <li>Trust is built and proof is shown</li>
+                <li>The visitor can take their time</li>
+            </ul>
+
+            <p>They read it now, think about it, come back later, and eventually say: <span class="highlight">“Yes. I want this.”</span></p>
+
+            <p>That’s the power of a landing page. Not chasing. Not begging. You create a place <span class="highlight">where “yes” can grow.</span></p>
+
+            <div class="card" style="border-left: 3px solid var(--accent-text); margin-top: 32px;">
+                <p style="color: var(--text-main); font-weight: 600; margin-bottom: 8px;">And the best part?</p>
+                <p style="margin-bottom: 0;">You don't need a laptop. You don't need a designer. You don't need to know how to code. You don't even need perfect English.</p>
+            </div>
+
+            <p>You can build a simple, professional landing page right from your phone — using AI. A page designed to capture the people who clicked your ad, even when they're not ready to buy immediately.</p>
+            
+            <p>Because the goal isn't just to get the click. <strong>The goal is to know what to do with the click.</strong></p>
+            <p>That’s the difference between simply buying traffic... and actually building a system that turns traffic into sales.</p>
+        </section>
+
+        <!-- DOMINIC'S STORY (EXACT WORD FOR WORD) -->
+        <section>
+            <p>Hi, I’m Dominic.</p>
+            <p>I studied computer science not because I loved coding, but because I wanted to build things that work.</p>
+            <p>But over time, I realized something:<br>Most people are obsessed with making websites that look good…<br>But not one person was teaching how to make them bring sales.</p>
+            <p>I started using AI to write code, test designs, fix errors — just to see what would happen.<br>And one day, it hit me:</p>
+            <p><em>What if we stopped pretending everyone needs a laptop or skills?<br>What if I could teach anyone in Lagos how to build a working landing page — using only their phone?</em></p>
+            <p>So I went quiet.<br>I went into the wilderness.<br>Tested every tool. Every method. Every shortcut.<br>Some worked. Most failed.</p>
+            <p>But after months of grinding, I found it a simple, repeatable way to build high-converting pages on a phone in 20 minutes… using free AI tools.</p>
+            <p>Now, I’m sharing it with you.</p>
+            <p>Not everything I discovered. Just enough.<br>Some methods are free. Others are paid.<br>But with the right instruction? You’ll get to the promise land.</p>
+            <p>No stress.<br>No confusion.</p>
+            <p><strong>I got you.</strong></p>
+        </section>
+
+        <!-- SOCIAL PROOF & STATS -->
+        <section>
+
+            <div class="testimonial-card">
+                <span class="quote-icon">“</span>
+                <p class="testimonial-text">I thought I needed to pay an agency $500. This training showed me how to build my page in 20 minutes on my Tecno. I got my first 3 leads the same night.</p>
+                <div class="test-author-box">
+                    <div class="avatar-circle">TK</div>
+                    <div class="author-details">
+                        <strong>Tunde K.</strong>
+                        <span>Digital Vendor, Lagos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT THEY WILL LEARN (WORD FOR WORD) -->
+        <section>
+            <h2>What You'll Walk Away With</h2>
+            <div class="grid-2">
+                
+                <div class="card">
+                    <div class="module-title">1. How to Use AI to Write High-Converting Copy (Even If Your English Is Weak)</div>
+                    <p>I’ll show you the exact prompts to give ChatGPT or Claude so it writes persuasive, natural-sounding sales text — in Nigerian English — that makes people stop and pay attention.</p>
+                    <p>No more guessing. No more copying others.</p>
+                    <p style="margin-bottom:0;">Just plug in your offer → get ready-to-use copy in seconds.</p>
+                </div>
+
+                <div class="card">
+                    <div class="module-title">2. The 20-Minute Phone-Only Page Structure That Converts</div>
+                    <p>Most landing pages fail because they’re too complicated.</p>
+                    <p>I’ll show you the simple 5-part structure I use — built on my phone — that guides the buyer from “Hmm…” to “I want this.”</p>
+                    <p>You’ll get the exact layout:</p>
+                    <ul class="micro-list module-list">
+                        <li>Where to put your headline</li>
+                        <li>How to write the offer</li>
+                        <li>Where to place the button</li>
+                        <li>How to make it feel trustworthy</li>
+                    </ul>
+                    <p style="margin-bottom:0;">All designed for mobile. All tested. All working.</p>
+                </div>
+
+                <div class="card">
+                    <div class="module-title">3. How to Build the Page Without Coding, Laptop, or Designer</div>
+                    <p>You don’t need Canva Pro. You don’t need Webflow.</p>
+                    <p>I’ll show you how to use free tools on your phone — like Canva, Google Forms, Bitly, and Wa.me links — to build a working page in 20 minutes or less.</p>
+                    <p style="margin-bottom:0;">Even if you’ve never built anything before.</p>
+                </div>
+
+                <div class="card">
+                    <div class="module-title">4. How to Capture Names & Numbers — So You Can Follow Up</div>
+                    <p>Your DMs are a black hole.</p>
+                    <p>I’ll show you how to use a free Google Form (connected to your page) to collect names, numbers, and even what product they’re interested in — so you can message them later, even if they don’t reply now.</p>
+                    <p style="margin-bottom:0;">This is how you turn cold traffic into warm leads.</p>
+                </div>
+
+                <div class="card">
+                    <div class="module-title">5. How to Send Leads Straight to WhatsApp (Automatically)</div>
+                    <p>When someone submits their info, you’ll learn how to set it up so:</p>
+                    <ul class="micro-list module-list">
+                        <li>You get an instant alert</li>
+                        <li>Their number goes straight into a WhatsApp chat</li>
+                        <li>You can reply fast — while the interest is hot</li>
+                    </ul>
+                    <p style="margin-bottom:0;">No delays. No lost chances.</p>
+                </div>
+
+                <div class="card">
+                    <div class="module-title">6. The 2026 Mindset: Why Long Pages Beat DMs Every Time</div>
+                    <p>I’ll show you why the new world of selling isn’t about chasing people in chat.</p>
+                    <p>It’s about giving them space to read, think, and say “Yes” in their mind — without pressure.</p>
+                    <p style="margin-bottom:0;">This is how smart creators in Lagos are now making sales while they sleep.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Q&A SECTION -->
+        <section>
+            <h2>Clearing Your Mind (Q&A)</h2>
+            <div class="card">
+                <div class="faq-item">
+                    <div class="faq-question">Do I really not need a laptop?</div>
+                    <p class="faq-answer">Yes. I designed this entire system specifically to be executed 100% on a smartphone. No zooming in on tiny screens or complex software.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Are the tools really free?</div>
+                    <p class="faq-answer">Absolutely. We use free versions of AI tools and free platforms to host your page and capture leads. You don't need to pay for website hosting.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if I have never built a page before?</div>
+                    <p class="faq-answer">That's the best part. You don't need coding or design skills. The AI will do the heavy lifting, and I will show you exactly where to place everything.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is the training actually free?</div>
+                    <p class="faq-answer">Yes, it is completely free to access. Just click the button to get the link to start learning immediately.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHATSAPP FOLLOW UP FORM -->
+        <section style="padding-top: 24px; padding-bottom: 24px;">
+            <h2>Still not sure? Let's chat.</h2>
+            <p>I know this sounds like a lot, and you might still be wondering how this works for *your* specific business. Don't worry.</p>
+            <p><strong>Drop your WhatsApp number below.</strong> I will personally send you a message so we can chat. This isn't a trick to spam you—just a friendly follow-up to answer your questions and help you decide if this is right for you.</p>
+            
+            <div class="form-box">
+                <!-- IMPORTANT: Replace YOUR_FORMSPREE_LINK_HERE with the link you get from formspree.io -->
+                <form action="https://formspree.io/f/mvkpzwyd" method="POST">
+                    <input type="tel" name="whatsapp_number" class="form-input" placeholder="Enter your WhatsApp number (e.g. 08012345678)" required>
+                    <input type="hidden" name="_subject" value="New WhatsApp Follow-up Request!">
+                    <button type="submit" class="cta-btn" style="margin-top: 0;">Request a Friendly Chat</button>
+                </form>
+                <p style="font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 12px; margin-bottom: 0;">Your information is 100% safe. We respect your privacy.</p>
+            </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section style="text-align: center;">
+            <h2>Stop Sending Traffic Into a Black Hole.</h2>
+            <p>Your ads are getting attention. Now build the page that catches it.</p>
+            
+            <a href="https://wa.link/lluucm" target="_blank" class="cta-btn">Get Instant Access Now</a>
+            <p class="cta-subtext">Build the page. Capture the lead. Start the conversation.</p>
+            <p class="cta-subtext">© 2026 Dominic Otaigbe</p>
+        </section>
+
+    </div>
+</div>
+</body>
+</html>
