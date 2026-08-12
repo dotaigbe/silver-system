@@ -12,7 +12,7 @@
             --bg-base: #0a0808; 
             --bg-card: #151211;
             --text-main: #F3F1F0;
-            --text-muted: #9CA3AF;
+            --text-muted: #B7B0AC;
             --accent-cta: #FF7B42; 
             --accent-text: #F2A679; 
             --border-color: #2D2623;
@@ -113,6 +113,7 @@
             margin-bottom: 24px; 
             letter-spacing: -1px;
             text-align: center;
+            color: var(--text-main);
         }
 
         h2 {
@@ -121,6 +122,7 @@
             line-height: 1.25;
             margin-bottom: 20px;
             letter-spacing: -0.5px;
+            color: var(--text-main);
         }
 
         p {
@@ -634,20 +636,6 @@
             line-height: 1.5;
         }
 
-        /* AI CREATION STATEMENT */
-        .ai-proof-text {
-            margin-bottom: 10px;
-        }
-
-        .ai-proof-text:last-of-type {
-            margin-bottom: 0;
-        }
-
-        .ai-proof-highlight {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
         @media (min-width: 768px) {
             h1 {
                 font-size: 48px;
@@ -704,7 +692,7 @@
             <h1>
                 Stop losing money on ads. Build a
                 <span class="highlight">high-converting</span>
-                landing page on your phone.
+                landing page in 20 minutes using AI.
             </h1>
             
             <p style="text-align: center;">
@@ -730,7 +718,6 @@
 
             <div class="marquee-track">
 
-                <!-- Set 1 -->
                 <div class="marquee-item"><span>⚡</span> 100% Smartphone Friendly</div>
                 <div class="marquee-item"><span>🤖</span> Free AI Tools Only</div>
                 <div class="marquee-item"><span>🚀</span> 20-Minute Setup</div>
@@ -738,7 +725,6 @@
                 <div class="marquee-item"><span>📱</span> Zero Laptop Required</div>
                 <div class="marquee-item"><span>🎯</span> High-Converting System</div>
 
-                <!-- Set 2 (Duplicate for Seamless Loop) -->
                 <div class="marquee-item"><span>⚡</span> 100% Smartphone Friendly</div>
                 <div class="marquee-item"><span>🤖</span> Free AI Tools Only</div>
                 <div class="marquee-item"><span>🚀</span> 20-Minute Setup</div>
@@ -958,32 +944,30 @@
 
             <h2>And this changes more than you think.</h2>
 
-            <p class="ai-proof-text">
+            <p>
                 These aren’t websites from an agency.
                 No developer team. No ₦200k budget. No months of coding.
             </p>
 
-            <p class="ai-proof-text">
-                They were built with <strong>AI in 20-Minute.</strong>
+            <p>
+                They were built with <strong>AI — in hours.</strong>
             </p>
 
-            <p class="ai-proof-text">
+            <p>
                 No coding.<br>
                 No waiting.<br>
                 No permission.
             </p>
 
-            <p class="ai-proof-text">
+            <p>
                 Just an idea, the right instructions, and the ability to type.
             </p>
 
-            <p class="ai-proof-text">
-                <strong>
-                    And if I can build this, you can too.
-                </strong>
+            <p>
+                <strong>And if I can build this, you can too.</strong>
             </p>
 
-            <p class="ai-proof-text">
+            <p>
                 Because AI is no longer just something you use.
             </p>
 
@@ -1056,7 +1040,7 @@
                     </div>
 
                     <div class="portfolio-title">
-                        Focus FM <span>↗</span>
+                        Lockin FM <span>↗</span>
                     </div>
 
                     <p class="portfolio-desc">
@@ -1435,7 +1419,6 @@
 
             const isOpen = item.classList.contains('active');
 
-            // Close all FAQ items
             faqItems.forEach((faq) => {
 
                 faq.classList.remove('active');
@@ -1448,7 +1431,6 @@
 
             });
 
-            // Open clicked FAQ if it was closed
             if (!isOpen) {
 
                 item.classList.add('active');
