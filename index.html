@@ -673,6 +673,100 @@
                 padding-right: 70px;
             }
         }
+
+        /* =========================================
+           DYNAMIC-ISLAND STYLE STICKY CTA
+           ========================================= */
+
+        .floating-cta {
+            position: fixed;
+            top: max(12px, env(safe-area-inset-top));
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            width: 184px;
+            height: 36px;
+            padding: 0 16px;
+
+            color: #F8F4F1;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.15px;
+
+            background:
+                linear-gradient(rgba(16, 13, 12, 0.97), rgba(16, 13, 12, 0.97)) padding-box,
+                linear-gradient(90deg, #FF7B42, #D58A67, #A66CFF, #FF7B42) border-box;
+
+            border: 1px solid transparent;
+            border-radius: 999px;
+
+            box-shadow:
+                0 8px 24px rgba(0, 0, 0, 0.38),
+                0 0 20px rgba(255, 123, 66, 0.10),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .floating-cta::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            flex: 0 0 6px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF7B42, #C68AFF);
+            box-shadow: 0 0 9px rgba(255, 123, 66, 0.45);
+        }
+
+        .floating-cta span {
+            display: inline-block;
+        }
+
+        .floating-cta .floating-arrow {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1;
+            color: #F2A679;
+            transition: transform 0.2s ease;
+        }
+
+        .floating-cta:hover {
+            transform: translateX(-50%) translateY(1px);
+            box-shadow:
+                0 10px 28px rgba(0, 0, 0, 0.42),
+                0 0 24px rgba(255, 123, 66, 0.14),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        .floating-cta:hover .floating-arrow {
+            transform: translateX(3px);
+        }
+
+        .floating-cta:active {
+            transform: translateX(-50%) scale(0.97);
+        }
+
+        @media (min-width: 768px) {
+            .floating-cta {
+                width: 196px;
+                height: 38px;
+                font-size: 11.5px;
+                top: 14px;
+            }
+        }
     </style>
 </head>
 
@@ -1407,6 +1501,12 @@
     </div>
 </div>
 
+
+    <!-- FLOATING STICKY CTA -->
+    <a href="https://wa.link/lluucm" target="_blank" class="floating-cta" aria-label="Get instant access to the free training">
+        <span>Get Free Access</span>
+        <span class="floating-arrow">→</span>
+    </a>
 
 <script>
     const faqItems = document.querySelectorAll('.faq-item');
