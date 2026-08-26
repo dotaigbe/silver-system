@@ -413,6 +413,45 @@
             border: 1px solid #1F1A18;
         }
 
+        .dominic-photo {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 28px;
+        }
+
+        .urgency-card {
+            background: rgba(255, 123, 66, 0.045);
+            border: 1px solid rgba(255, 123, 66, 0.22);
+            border-left: 3px solid var(--accent-cta);
+            border-radius: 0 16px 16px 0;
+            padding: 24px 22px;
+            margin-top: 24px;
+        }
+
+        .urgency-card .urgency-title {
+            color: var(--text-main);
+            font-size: 20px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 14px;
+        }
+
+        .urgency-card p {
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .urgency-card p:last-child {
+            margin-bottom: 0;
+            color: var(--text-main);
+            font-weight: 800;
+        }
+
         .quote-icon {
             color: var(--accent-cta);
             font-size: 40px;
@@ -446,6 +485,27 @@
             justify-content: center;
             font-weight: 600;
             font-size: 14px;
+        }
+
+        /* UPDATED: Larger "Instagram-like" circular avatar for Dominic */
+        .dominic-avatar {
+            width: 96px;               /* larger, Instagram-like size */
+            height: 96px;
+            border-radius: 50%;        /* circular */
+            object-fit: cover;         /* crop to fill */
+            object-position: center;
+            display: block;
+            margin: 0 auto 14px;       /* centered with comfortable spacing */
+            border: 3px solid var(--border-color); /* slightly thicker border to match theme */
+        }
+
+        /* bump the avatar a bit more on wider screens */
+        @media (min-width: 768px) {
+            .dominic-avatar {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 18px;
+            }
         }
 
         .author-details strong {
@@ -991,6 +1051,8 @@
         <!-- DOMINIC'S STORY -->
         <section>
 
+            <img class="dominic-avatar" src=".//file_00000000102481f4a52e823dd743b18b.png" alt="Dominic" loading="lazy">
+
             <p>Hi, I’m Dominic.</p>
 
             <p>
@@ -1089,17 +1151,17 @@
                 <a href="https://aipoweredproject.netlify.app" target="_blank" class="portfolio-card">
 
                     <div
-                        class="portfolio-img"
-                        style="background-image: url('aipoweredproject screenshot.jpg');">
-                    </div>
+                            class="portfolio-img"
+                            style="background-image: url('aipoweredproject screenshot.jpg');">
+                        </div>
 
-                    <div class="portfolio-title">
-                        Dominic AI <span>↗</span>
-                    </div>
+                        <div class="portfolio-title">
+                            Dominic AI <span>↗</span>
+                        </div>
 
-                    <p class="portfolio-desc">
-                        A complete AI-powered service website created to present an offer clearly, build trust, and turn visitors into customers.
-                    </p>
+                        <p class="portfolio-desc">
+                            A complete AI-powered service website created to present an offer clearly, build trust, and turn visitors into customers.
+                        </p>
 
                 </a>
                 
@@ -1107,17 +1169,17 @@
                 <a href="https://first-ai-income.netlify.app" target="_blank" class="portfolio-card">
 
                     <div
-                        class="portfolio-img"
-                        style="background-image: url('first-ai-income screenahot.jpg');">
-                    </div>
+                            class="portfolio-img"
+                            style="background-image: url('first-ai-income screenahot.jpg');">
+                        </div>
 
-                    <div class="portfolio-title">
-                        AI First Income Blueprint <span>↗</span>
-                    </div>
+                        <div class="portfolio-title">
+                            AI First Income Blueprint <span>↗</span>
+                        </div>
 
-                    <p class="portfolio-desc">
-                        A full sales page created with AI — from the structure and copy to the design and presentation of the offer.
-                    </p>
+                        <p class="portfolio-desc">
+                            A full sales page created with AI — from the structure and copy to the design and presentation of the offer.
+                        </p>
 
                 </a>
 
@@ -1125,17 +1187,17 @@
                 <a href="https://dominicskincare.netlify.app" target="_blank" class="portfolio-card">
 
                     <div
-                        class="portfolio-img"
-                        style="background-image: url('Skin care screenshot.jpg');">
-                    </div>
+                            class="portfolio-img"
+                            style="background-image: url('Skin care screenshot.jpg');">
+                        </div>
 
-                    <div class="portfolio-title">
-                        Dominic Skincare <span>↗</span>
-                    </div>
+                        <div class="portfolio-title">
+                            Dominic Skincare <span>↗</span>
+                        </div>
 
-                    <p class="portfolio-desc">
-                        A polished e-commerce website showing how AI can help you create something visually beautiful for a completely different type of business.
-                    </p>
+                        <p class="portfolio-desc">
+                            A polished e-commerce website showing how AI can help you create something visually beautiful for a completely different type of business.
+                        </p>
 
                 </a>
 
@@ -1143,17 +1205,17 @@
                 <a href="https://dominicsound.netlify.app" target="_blank" class="portfolio-card">
 
                     <div
-                        class="portfolio-img"
-                        style="background-image: url('sound screen shot.jpg');">
-                    </div>
+                            class="portfolio-img"
+                            style="background-image: url('sound screen shot.jpg');">
+                        </div>
 
-                    <div class="portfolio-title">
-                        Focus FM <span>↗</span>
-                    </div>
+                        <div class="portfolio-title">
+                            Focus FM <span>↗</span>
+                        </div>
 
-                    <p class="portfolio-desc">
-                        A modern dark-mode website built around a completely different idea — showing how flexible AI can be when bringing a concept to life.
-                    </p>
+                        <p class="portfolio-desc">
+                            A modern dark-mode website built around a completely different idea — showing how flexible AI can be when bringing a concept to life.
+                        </p>
 
                 </a>
 
@@ -1382,6 +1444,22 @@
 
                 </div>
 
+            </div>
+
+        </section>
+
+        <!-- REAL URGENCY / COMMITMENT SECTION -->
+        <section>
+
+            <span class="label">A Real Deadline</span>
+
+            <div class="urgency-card">
+                <div class="urgency-title">Only 100 spots available.</div>
+
+                <p>No replay.</p>
+                <p>This is live. This is real.</p>
+
+                <p style="margin-top: 14px;">After this, I’m charging ₦10,000 for the training.</p>
             </div>
 
         </section>
